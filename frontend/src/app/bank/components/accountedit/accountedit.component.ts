@@ -92,6 +92,6 @@ accountSuccess$: Observable<string>;
         // Handle error
         console.error("Unable to update account", error);
       }
-    );
+    )
   }
 }
