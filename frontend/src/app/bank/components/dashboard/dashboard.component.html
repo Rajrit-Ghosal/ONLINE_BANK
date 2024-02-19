@@ -1,13 +1,18 @@
 
 <app-navbar></app-navbar>
-
+<style>
+  body {
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/004/242/510/small_2x/abstract-wave-trendy-geometric-abstract-background-with-white-and-blue-gradient-vector.jpg');
+    }
+  </style>
+<body>
 <div class="table-container" *ngIf="role !== 'USER'">
   
   <h2>Customers</h2>
   <table class="customer-table">
     <thead>
       <tr>
-        <th>Customer #</th>
+        <th>Customer </th>
         <th>Customer Name</th>
         <th>Email</th>
         <th>Edit</th>
@@ -21,9 +26,9 @@
         <td>{{ customer.name }}</td>
         <td>{{ customer.email }}</td>
         
-        <td >  <button class="task-list" (click)="editCustomer(customer)">Edit</button>
+        <td >  <button class="task-list" (click)="editCustomer(customer)" id="edit">Edit</button>
         </td>
-        <td> <button (click)="deteteCustomer(customer)" >Delete</button>
+        <td> <button (click)="deteteCustomer(customer)" id="delete" >Delete</button>
         </td>
       </tr>
     </tbody>
@@ -48,10 +53,10 @@
       <tr *ngFor="let account of accounts$ | async">
         <td>{{ account.accountId}}</td>
         <td>{{ account.customer.customerId }}</td>
-        <td>{{ account.balance }}</td>
-        <td *ngIf="role !== 'USER'">  <button class="task-list" (click)="editAccount(account)" >Edit</button>
+        <td>{{ account.balance | currency:'INR':true}}</td>
+        <td *ngIf="role !== 'USER'">  <button class="task-list" (click)="editAccount(account)" id="edit">Edit</button>
         </td>
-        <td *ngIf="role !== 'USER'"> <button (click)="deteteAccount(account)" >Delete</button>
+        <td *ngIf="role !== 'USER'"> <button (click)="deteteAccount(account)" id="delete">Delete</button>
       </tr>
     </tbody>
   </table>
@@ -73,9 +78,10 @@
       <tr *ngFor="let transaction of transactions$ | async">
        
         <td>{{ transaction.accounts?.accountId }}</td>
-        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.amount | currency:'INR':true }}</td>
         <td>{{ transaction.transactionDate | date:'longDate'}}</td>
       </tr>
     </tbody>
   </table>
 </div>
+</body>
