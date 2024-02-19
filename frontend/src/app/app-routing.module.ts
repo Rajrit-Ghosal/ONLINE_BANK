@@ -4,14 +4,14 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { AuthInterceptor } from "./auth.interceptors";
- 
- 
+
+
 const routes: Routes = [
   {
     path: "auth",
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
- 
+
   {
     path: "bank",
     loadChildren: () => import("./bank/bank.module").then((m) => m.BankModule),
@@ -26,10 +26,10 @@ const routes: Routes = [
   //   component:TestingComponent
   // }
 ];
- 
+
 @NgModule({
-  declarations:[AppComponent],
-  imports: [RouterModule.forRoot(routes),BrowserModule,HttpClientModule],
+  declarations: [AppComponent],
+  imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -38,6 +38,6 @@ const routes: Routes = [
     },
   ],
   exports: [RouterModule],
-  bootstrap:[AppComponent]
+  bootstrap: [AppComponent]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

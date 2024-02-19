@@ -18,15 +18,15 @@ export class AccountComponent implements OnInit {
   accountSuccess$: Observable<string>;
   isFormSubmitted: boolean = false;
   bankService: BankService;
-  role:string|null;
-  userId:string|null;
+  role: string | null;
+  userId: string | null;
   constructor(
     private formBuilder: FormBuilder,
     private banksService: BankService
   ) {
-  
+
     this.customers$ = this.banksService.getCustomers();
-    
+
   }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class AccountComponent implements OnInit {
       customer: ["", [Validators.required]],
       balance: ["", [Validators.required]],
     });
-    
+
   }
 
   onSubmit() {
@@ -44,7 +44,7 @@ export class AccountComponent implements OnInit {
     if (this.accountForm.invalid) {
       return;
     } else {
-      const formData= this.accountForm.value;
+      const formData = this.accountForm.value;
       console.log(formData);
       const account = new Account(formData);
       this.banksService.addAccount(account).subscribe(

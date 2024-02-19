@@ -23,4 +23,3 @@ import { EditAccountComponent } from "./components/accountedit/accountedit.compo
   ],
 })
 export class BankModule {}
-
